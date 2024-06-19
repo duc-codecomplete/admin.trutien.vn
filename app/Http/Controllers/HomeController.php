@@ -168,4 +168,15 @@ class HomeController extends Controller
         $post->delete();
         return redirect("/posts");
     }
+
+    public function napVg() {
+        $gameApi = env('GAME_API_ENDPOINT', '');
+        return $gameApi;
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $gameApi.'/html/reg.php', ["form_params" => [
+            "login" => ""
+        ]]);
+        $content = json_decode($response->getBody()->getContents(), true);
+        return $content;
+    }
 }
