@@ -14,4 +14,8 @@ class Post extends Model
         'huongdan' => "Hướng Dẫn",
         'sukien' => "Sự Kiện"
      ];
+
+     public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

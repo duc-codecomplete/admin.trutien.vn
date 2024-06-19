@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\Giftcode;
+use App\Models\Post;
 use App\Models\Promotion;
 use App\Models\User;
-use App\Models\Post;
 use Auth;
-use Illuminate\Support\Str;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
 
     public function home()
     {
+        $revenue = Deposit::where("status", "done")->sum("amount");
         $data = [
             "users" => User::count(),
-            "revenue" => 98000000,
+            "revenue" => $revenue,
         ];
         return view('home', ["data" => $data]);
     }
@@ -132,7 +133,7 @@ class HomeController extends Controller
     {
         $validated = $request->validate([
             'title' => 'bail|required',
-            'content' => 'bail|required'
+            'content' => 'bail|required',
         ]);
         $item = new Post;
         $item->title = $request->title;
@@ -167,5 +168,50 @@ class HomeController extends Controller
         $post = Post::find($id);
         $post->delete();
         return redirect("/posts");
+    }
+
+    public function napVg()
+    {
+        $gameApi = env('GAME_API_ENDPOINT', '');
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $gameApi . '/html/reg.php', ["form_params" => [
+            "login" => "",
+        ]]);
+        $content = json_decode($response->getBody()->getContents(), true);
+        return $content;
+    }
+
+    public function deposits()
+    {
+        $deposits = Deposit::latest()->get();
+        return view("deposits.index", ["deposits" => $deposits]);
+    }
+
+    public function depositsAddGet()
+    {
+        return view("promotions.add");
+    }
+
+    public function depositsApprove(Request $request, $id)
+    {
+        $gameApi = env('GAME_API_ENDPOINT', '');
+        $item = Deposit::find($id);
+        $user = User::find($item->user_id);
+
+        $client = new \GuzzleHttp\Client();
+        try {
+            $client->request('POST', $gameApi . '/html/knb.php', ["form_params" => [
+                "userid" => $user->userid,
+                "cash" => intval($item->amount_promotion) / 10,
+            ]]);
+            $item->status = "done";
+        } catch (\Throwable $th) {
+            $item->status = "fail";
+        }
+
+        $item->processing_time = date("Y-m-d H:i:s");
+        $item->processing_user = Auth::user()->id;
+        $item->save();
+        return redirect("/deposits")->with("error", "Nạp Vgold thất bại!");
     }
 }

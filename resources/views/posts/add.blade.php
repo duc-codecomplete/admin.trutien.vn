@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <br>
-                        <textarea name="content" id="editor" cols="30" rows="10"></textarea>
+                        <textarea name="content" id="editor" cols="30" rows="30"></textarea>
                         <div class="form-group" style="margin-top:50px">
                             <div class="col-md-6 col-sm-6 offset-md-3">
                                 <a href="/giftcodes" class="btn btn-danger" type="button">Huỷ</a>
@@ -72,11 +72,9 @@
 
 <script src="/assets/ckeditor/ckeditor.js"></script>
   <script>
-    CKEDITOR.replace('editor');
-
-    $("#editor").change(function(){
-  alert("The text has been changed.");
-});
+    CKEDITOR.replace('editor', {
+        height: 560
+    });
   </script>
 
 @endsection

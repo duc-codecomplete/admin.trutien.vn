@@ -47,4 +47,12 @@ class User extends Authenticatable
     {
         return "username";
     }
+
+    public function deposits() {
+        return $this->hasMany(Deposit::class);
+    }
+
+    public function giftcodes() {
+        return $this->hasMany(GiftcodeUser::class);
+    }
 }

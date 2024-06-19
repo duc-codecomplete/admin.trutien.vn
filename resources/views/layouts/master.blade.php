@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/assets/images/favicon.ico" type="image/ico" />
 
-  <title>Gentelella Alela!</title>
+  <title>Admin Control Panel</title>
 
   <!-- Bootstrap -->
   <link href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@
               <ul class="nav side-menu">
                 <li><a href="/"><i class="fa fa-laptop"></i> Trang chủ</a></li>
                 <li><a href="/users"><i class="fa fa-users"></i> Thành viên</a></li>
-                <li><a><i class="fa fa-money"></i> Lịch Sử Nạp tiền</a></li>
+                <li><a href="/deposits"><i class="fa fa-money"></i> Lịch Sử Nạp tiền</a></li>
                 <li><a href="/giftcodes"><i class="fa fa-gift"></i> Giftcode</a></li>
                 <li><a href="/promotions"><i class="fa fa-send"></i> Khuyến Mãi</a></li>
                 <li><a href="/posts"><i class="fa fa-edit"></i> Tin tức</a></li>

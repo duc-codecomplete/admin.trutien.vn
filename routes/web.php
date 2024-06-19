@@ -47,6 +47,12 @@ Route::group(["middleware" => "auth"], function () {
 		Route::post('/{id}/edit', [HomeController::class, 'postsEditPost']);
 		Route::get('/{id}/delete', [HomeController::class, 'postsDeleteGet']);
 	});
+
+	Route::group(["prefix" => "deposits"], function () {
+		Route::get('/', [HomeController::class, 'deposits']);
+		Route::get('/add', [HomeController::class, 'depositsProcess']);
+		Route::get('/{id}/approve', [HomeController::class, 'depositsApprove']);
+	});
 });
 
 

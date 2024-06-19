@@ -10,6 +10,6 @@ class Promotion extends Model
     use HasFactory;
 
     public function getType() {
-        return $this->type == "double" ? "Nhân Tỉ Lệ" : "Phần Trăm";
+        return $this->type == "double" ? "Tỉ Lệ" : "Phần Trăm";
     }
 }
