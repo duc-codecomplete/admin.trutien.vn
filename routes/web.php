@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
 use App\Http\Middleware\IsAdmin;
 
 /*
@@ -21,12 +20,12 @@ Route::get('/dang-nhap', [HomeController::class, 'signin'])->name("login");
 Route::post('/dang-nhap', [HomeController::class, 'signinPost']);
 
 
-Route::group([], function () {
-    Route::get('/', [AdminController::class, 'home']);
+Route::group(["middleware" => "auth"], function () {
+    Route::get('/', [HomeController::class, 'home']);
     Route::get('/logout', function() {
 		Auth::logout();
 		return redirect("/dang-nhap");
 	});
-})->middleware(IsAdmin::class);
+});
 
 
