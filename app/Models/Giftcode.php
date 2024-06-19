@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Promotion extends Model
+class Giftcode extends Model
 {
     use HasFactory;
-
-    public function getType() {
-        return $this->type == "double" ? "Nhân Tỉ Lệ" : "Phần Trăm";
-    }
 }

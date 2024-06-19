@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Promotion;
 use App\Models\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-
+use Auth;;
 class HomeController extends Controller
 {
 
@@ -13,17 +13,15 @@ class HomeController extends Controller
     {
         $data = [
             "users" => User::count(),
-            "revenue" => 98000000
+            "revenue" => 98000000,
         ];
         return view('home', ["data" => $data]);
     }
-
 
     public function signin()
     {
         return view('signin');
     }
-
 
     public function signinPost(Request $request)
     {
@@ -47,5 +45,40 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with('error', 'Tên đăng nhập hoặc mật khẩu không chính xác');
         }
+    }
+
+    public function users()
+    {
+        $users = User::latest()->get();
+        return view("users.index", ["users" => $users]);
+    }
+
+    public function promotions()
+    {
+        $promotions = Promotion::latest()->get();
+        return view("promotions.index", ["promotions" => $promotions]);
+    }
+
+    public function promotionsAddGet()
+    {
+        return view("promotions.add");
+    }
+
+    public function promotionsAddPost(Request $request)
+    {
+        $validated = $request->validate([
+            'start_time' => 'bail|required|date',
+            'end_time' => 'bail|required|date|after:start_time',
+            "amount" => 'bail|required'
+        ]);
+
+        $item = new Promotion;
+        $item->start_time = $request->start_time;
+        $item->end_time = $request->end_time;
+        $item->type = $request->type;
+        $item->user_id = Auth::user()->id;
+        $item->amount = $request->amount;
+        $item->save();
+        return redirect("/promotions");
     }
 }

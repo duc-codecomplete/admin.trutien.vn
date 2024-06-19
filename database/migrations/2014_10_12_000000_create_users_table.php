@@ -38,6 +38,16 @@ return new class extends Migration
         $user->password = \Hash::make("Zxcv1234@");
         $user->email_verified_at = date("Y-m-d H:i:s");
         $user->save();
+
+        $user = new User;
+        $user->name = "admin2";
+        $user->username = "admin2";
+        $user->userid = "admin2";
+        $user->email = "admin2@gmail.com";
+        $user->password2 = "admin2";
+        $user->password = \Hash::make("Zxcv1234@");
+        $user->email_verified_at = date("Y-m-d H:i:s");
+        $user->save();
     }
 
     /**

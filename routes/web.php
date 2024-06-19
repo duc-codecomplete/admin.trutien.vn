@@ -26,6 +26,12 @@ Route::group(["middleware" => "auth"], function () {
 		Auth::logout();
 		return redirect("/dang-nhap");
 	});
+	Route::get('/users', [HomeController::class, 'users']);
+	Route::group(["prefix" => "promotions"], function () {
+		Route::get('/', [HomeController::class, 'promotions']);
+		Route::get('/add', [HomeController::class, 'promotionsAddGet']);
+		Route::post('/add', [HomeController::class, 'promotionsAddPost']);
+	});
 });
 
 

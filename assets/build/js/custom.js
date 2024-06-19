@@ -2481,7 +2481,10 @@ function init_DataTables() {
 
     console.log('run_datatables');
 
-    if (typeof ($.fn.DataTable) === 'undefined') { return; }
+    if (typeof ($.fn.DataTable) === 'undefined') { 
+        console.log("noo")
+        return; 
+    }
     console.log('init_DataTables');
 
     var handleDataTableButtons = function () {

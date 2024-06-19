@@ -37,7 +37,7 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Bảng điều khiển</span></a>
+            <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Bảng điều khiển</span></a>
           </div>
 
           <div class="clearfix"></div>
@@ -56,10 +56,11 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
               <ul class="nav side-menu">
-                <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Trang chủ</a></li>
-                <li><a><i class="fa fa-users"></i> Thành viên</a></li>
+                <li><a href="/"><i class="fa fa-laptop"></i> Trang chủ</a></li>
+                <li><a href="/users"><i class="fa fa-users"></i> Thành viên</a></li>
                 <li><a><i class="fa fa-money"></i> Lịch Sử Nạp tiền</a></li>
                 <li><a><i class="fa fa-gift"></i> Giftcode</a></li>
+                <li><a href="/promotions"><i class="fa fa-send"></i> Khuyến Mãi</a></li>
                 <li><a><i class="fa fa-edit"></i> Tin tức</a></li>
               </ul>
             </div>
@@ -195,9 +196,29 @@
   <!-- bootstrap-daterangepicker -->
   <script src="/assets/vendors/moment/min/moment.min.js"></script>
   <script src="/assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+  <script src="/assets/vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="/assets/vendors/nprogress/nprogress.js"></script>
+  <!-- iCheck -->
+  <script src="/assets/vendors/iCheck/icheck.min.js"></script>
+  <!-- Datatables -->
+  <script src="/assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="/assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="/assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+  <script src="/assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+  <script src="/assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+  <script src="/assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+  <script src="/assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="/assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+  <script src="/assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+  <script src="/assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+  <script src="/assets/vendors/jszip/dist/jszip.min.js"></script>
+  <script src="/assets/vendors/pdfmake/build/pdfmake.min.js"></script>
+  <script src="/assets/vendors/pdfmake/build/vfs_fonts.js"></script>
   <!-- Custom Theme Scripts -->
-  <script src="/assets/build/js/custom.min.js"></script>
+  <script src="/assets/build/js/custom.js"></script>
 
 </body>
 
