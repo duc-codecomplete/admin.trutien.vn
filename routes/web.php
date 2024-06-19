@@ -32,6 +32,21 @@ Route::group(["middleware" => "auth"], function () {
 		Route::get('/add', [HomeController::class, 'promotionsAddGet']);
 		Route::post('/add', [HomeController::class, 'promotionsAddPost']);
 	});
+
+	Route::group(["prefix" => "giftcodes"], function () {
+		Route::get('/', [HomeController::class, 'giftcodes']);
+		Route::get('/add', [HomeController::class, 'giftcodesAddGet']);
+		Route::post('/add', [HomeController::class, 'giftcodesAddPost']);
+	});
+
+	Route::group(["prefix" => "posts"], function () {
+		Route::get('/', [HomeController::class, 'posts']);
+		Route::get('/add', [HomeController::class, 'postsAddGet']);
+		Route::post('/add', [HomeController::class, 'postsAddPost']);
+		Route::get('/{id}/edit', [HomeController::class, 'postsEditGet']);
+		Route::post('/{id}/edit', [HomeController::class, 'postsEditPost']);
+		Route::get('/{id}/delete', [HomeController::class, 'postsDeleteGet']);
+	});
 });
 
 

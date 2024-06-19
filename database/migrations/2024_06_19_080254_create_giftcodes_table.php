@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('giftcodes', function (Blueprint $table) {
             $table->id();
-            $table->string('giftcode');
+            $table->string('giftcode')->unique();
             $table->string('itemid');
             $table->dateTime('expired');
-            $table->integer('count');
-            $table->integer('quantity');
+            $table->integer('count')->default(1);
+            $table->integer('quantity')->default(0);
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

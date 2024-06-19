@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('image');
-            $table->integer('category');
+            $table->string('category')->default("tintuc");
             $table->string('slug');
             $table->text('content');
             $table->integer('user_id');

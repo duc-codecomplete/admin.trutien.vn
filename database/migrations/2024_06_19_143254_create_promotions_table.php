@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer("amount")->default(2);
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
