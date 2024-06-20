@@ -170,16 +170,6 @@ class HomeController extends Controller
         return redirect("/posts");
     }
 
-    public function napVg()
-    {
-        $gameApi = env('GAME_API_ENDPOINT', '');
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', $gameApi . '/html/reg.php', ["form_params" => [
-            "login" => "",
-        ]]);
-        $content = json_decode($response->getBody()->getContents(), true);
-        return $content;
-    }
 
     public function deposits()
     {
@@ -205,13 +195,16 @@ class HomeController extends Controller
                 "cash" => intval($item->amount_promotion) / 10,
             ]]);
             $item->status = "done";
+            $item->processing_time = date("Y-m-d H:i:s");
+            $item->processing_user = Auth::user()->id;
+            $item->save();
+            return redirect("/deposits")->with("success", "Nạp Vgold thành công!");
         } catch (\Throwable $th) {
             $item->status = "fail";
+            $item->processing_time = date("Y-m-d H:i:s");
+            $item->processing_user = Auth::user()->id;
+            $item->save();
+            return redirect("/deposits")->with("error", "Nạp Vgold thất bại!");
         }
-
-        $item->processing_time = date("Y-m-d H:i:s");
-        $item->processing_user = Auth::user()->id;
-        $item->save();
-        return redirect("/deposits")->with("error", "Nạp Vgold thất bại!");
     }
 }
