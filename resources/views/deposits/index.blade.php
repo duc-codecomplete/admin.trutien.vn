@@ -20,6 +20,24 @@
           </a>
           <div class="clearfix"></div>
         </div> --}}
+        @if(Session::has('error'))
+        <div class="alert alert-danger alert-dismissible " role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+          </button>
+          {{ Session::get('error') }}
+        </div>
+            <p class="alert" style="text-align: center;color:red">{{ Session::get('error') }}
+        </p>
+        @endif
+        @if(Session::has('success'))
+        <div class="alert alert-success alert-dismissible " role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+          </button>
+          {{ Session::get('success') }}
+        </div>
+            <p class="alert" style="text-align: center;color:red">{{ Session::get('error') }}
+        </p>
+        @endif
         <div class="x_content">
           <div class="row">
             <div class="col-sm-12">
@@ -53,7 +71,7 @@
                         @endif
                       </td>
                       <td>{{$item->processing_by ? $item->processing_by->username : ""}}</td>
-                      <th>{{\Carbon\Carbon::parse($item->processing_time)->format("d/m/Y H:i:s")}}
+                      <th>{{$item->processing_time ? \Carbon\Carbon::parse($item->processing_time)->format("d/m/Y H:i:s") : ""}}
                       </th>
                       <td>{{\Carbon\Carbon::parse($item->created_at)->format("d/m/Y H:i:s")}}</td>
                     </tr>
