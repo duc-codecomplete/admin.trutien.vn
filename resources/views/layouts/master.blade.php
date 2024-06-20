@@ -60,6 +60,7 @@
                 <li><a href="/users"><i class="fa fa-users"></i> Thành viên</a></li>
                 <li><a href="/deposits"><i class="fa fa-money"></i> Lịch Sử Nạp tiền</a></li>
                 <li><a href="/giftcodes"><i class="fa fa-gift"></i> Giftcode</a></li>
+                <li><a href="/shops"><i class="fa fa-shopping-cart"></i> Shop vật phẩm</a></li>
                 <li><a href="/promotions"><i class="fa fa-send"></i> Khuyến Mãi</a></li>
                 <li><a href="/posts"><i class="fa fa-edit"></i> Tin tức</a></li>
               </ul>

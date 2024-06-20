@@ -7,6 +7,7 @@ use App\Models\Giftcode;
 use App\Models\Post;
 use App\Models\Promotion;
 use App\Models\User;
+use App\Models\Shop;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -88,34 +89,34 @@ class HomeController extends Controller
         return redirect("/promotions");
     }
 
-    public function giftcodes()
+    public function shops()
     {
-        $giftcodes = Giftcode::latest()->get();
-        return view("giftcodes.index", ["giftcodes" => $giftcodes]);
+        $shops = Shop::latest()->get();
+        return view("shops.index", ["shops" => $shops]);
     }
 
-    public function giftcodesAddGet()
+    public function shopsAddGet()
     {
-        return view("giftcodes.add");
+        return view("shops.add");
     }
 
-    public function giftcodesAddPost(Request $request)
+    public function shopsAddPost(Request $request)
     {
         $validated = $request->validate([
-            'giftcode' => 'bail|required',
-            'expired' => 'bail|required|date|after:today',
-            "itemid" => 'bail|required',
+            'itemid' => 'bail|required',
+            'name' => 'bail|required',
+            "price" => 'bail|required',
         ]);
-        if (Giftcode::where("giftcode", $request->giftcode)->first()) {
-            return redirect()->back()->with('error', 'Mã giftcode đã tồn tại.');
+        if (Giftcode::where("itemid", $request->itemid)->first()) {
+            return redirect()->back()->with('error', 'Vật phẩm đã tồn tại.');
         }
-        $item = new Giftcode;
-        $item->giftcode = $request->giftcode;
+        $item = new Shop;
         $item->itemid = $request->itemid;
-        $item->expired = $request->expired;
-        $item->user_id = Auth::user()->id;
+        $item->name = $request->name;
+        $item->price = $request->price;
+        $item->description = $request->description;
         $item->save();
-        return redirect("/giftcodes");
+        return redirect("/shops");
     }
 
     public function posts()
@@ -207,4 +208,36 @@ class HomeController extends Controller
             return redirect("/deposits")->with("error", "Nạp Vgold thất bại!");
         }
     }
+
+
+    public function giftcodes()
+    {
+        $giftcodes = Giftcode::latest()->get();
+        return view("giftcodes.index", ["giftcodes" => $giftcodes]);
+    }
+
+    public function giftcodesAddGet()
+    {
+        return view("giftcodes.add");
+    }
+
+    public function giftcodesAddPost(Request $request)
+    {
+        $validated = $request->validate([
+            'giftcode' => 'bail|required',
+            'expired' => 'bail|required|date|after:today',
+            "itemid" => 'bail|required',
+        ]);
+        if (Giftcode::where("giftcode", $request->giftcode)->first()) {
+            return redirect()->back()->with('error', 'Mã giftcode đã tồn tại.');
+        }
+        $item = new Giftcode;
+        $item->giftcode = $request->giftcode;
+        $item->itemid = $request->itemid;
+        $item->expired = $request->expired;
+        $item->user_id = Auth::user()->id;
+        $item->save();
+        return redirect("/giftcodes");
+    }
+
 }
