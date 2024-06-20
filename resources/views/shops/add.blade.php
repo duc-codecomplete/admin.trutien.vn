@@ -57,10 +57,14 @@
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align"></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Trạng thái <span
+                                    class="required">*</span>
+                            </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <p>*Lưu ý: Nếu chọn tỉ lệ thì giá trị có thể là 2, 3... còn nếu chọn phần trăm thì giá trị là bao nhiêu phần trăm</p>
-                                <p>Không được trùng khoảng thời gian khuyến mãi</p>
+                                <select name="status" id="" class="form-control">
+                                    <option value="active">Đang bán</option>
+                                    <option value="inactive">Ngừng bán</option>
+                                </select>
                             </div>
                         </div>
                         <div class="ln_solid"></div>

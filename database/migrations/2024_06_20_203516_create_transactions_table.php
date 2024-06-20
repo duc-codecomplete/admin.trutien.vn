@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('giftcodes', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('giftcode')->unique();
-            $table->string('itemid');
-            $table->dateTime('expired');
-            $table->integer('count')->default(1);
-            $table->integer('quantity')->default(0);
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
-            $table->string('status')->default('active');
-            $table->string('award')->nullable();
+            $table->integer("shop_quantity")->nullable();
+            $table->integer("knb_amount")->nullable();
+            $table->integer('shop_id')->nullable();
+            $table->string("type")->default("knb");
+            $table->string("char_id")->nullable();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('giftcodes');
+        Schema::dropIfExists('transactions');
     }
 };

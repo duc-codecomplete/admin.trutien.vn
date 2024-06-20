@@ -31,6 +31,7 @@
                                             <th>Giftcode</th>
                                             <th>Ngày hết hạn</th>
                                             <th>ID Vật Phẩm</th>
+                                            <th>Phần thưởng</th>
                                             <th>Số lượng đã dùng</th>
                                         </tr>
                                     </thead>
@@ -41,6 +42,7 @@
                                             <td>{{$item->giftcode}}</td>
                                             <td>{{\Carbon\Carbon::parse($item->expired)->format("d/m/Y")}}</td>
                                             <td>{{$item->itemid}}</td>
+                                            <td>{{$item->award}}</td>
                                             <td>{{$item->quantity }}
                                             </td>
 

@@ -3,7 +3,7 @@
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Thêm mới giftcode</h3>
+            <h3>Sửa vật phẩm</h3>
         </div>
     </div>
 
@@ -29,39 +29,53 @@
                         <p class="alert alert-danger">{{ Session::get('error') }}</p>
                         @endif
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Mã Giftcode</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">ID Vật phẩm</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" name="giftcode" class="form-control">
+                                <input type="number" name="itemid" class="form-control" value="{{ $shop->itemid }}">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">ID Vật Phẩm</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tên Vật Phẩm</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="number" name="itemid" class="form-control">
+                                <input type="text" name="name" class="form-control" value="{{ $shop->name }}">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Ngày hết hạn <span
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Mô tả <span
                                     class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input name="expired" class="form-control" placeholder="dd-mm-yyyy"
-                                    type="date" required="required">
+                                <input type="text" name="description" class="form-control" value="{{ $shop->description }}">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align"></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Giá tiền (xu) <span
+                                    class="required">*</span>
+                            </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <p>*Lưu ý: Nếu chọn tỉ lệ thì giá trị có thể là 2, 3... còn nếu chọn phần trăm thì giá trị là bao nhiêu phần trăm</p>
-                                <p>Không được trùng khoảng thời gian khuyến mãi</p>
+                                <input type="number" name="price" class="form-control" value="{{ $shop->price }}">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Trạng thái <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select name="status" id="" class="form-control">
+                                    <option value="active" @php if ($shop->status == "active") {
+                                        echo "selected";
+                                    } @endphp>Đang bán</option>
+                                    <option value="inactive" @php if ($shop->status == "inactive") {
+                                        echo "selected";
+                                    } @endphp>Ngừng bán</option>
+                                </select>
                             </div>
                         </div>
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <a href="/giftcodes" class="btn btn-danger" type="button">Huỷ</a>
-                                <button class="btn btn-primary" type="reset">Reset</button>
-                                <button type="submit" class="btn btn-success">Thêm</button>
+                                <a href="/shops" class="btn btn-danger" type="button">Huỷ</a>
+                                <button type="submit" class="btn btn-success">Cập nhật</button>
                             </div>
                         </div>
 

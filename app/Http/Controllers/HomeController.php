@@ -119,6 +119,32 @@ class HomeController extends Controller
         return redirect("/shops");
     }
 
+    public function shopsEditGet($id)
+    {
+        return view("shops.edit", ["shop" => Shop::find($id)]);
+    }
+
+    public function shopsEditPost(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'itemid' => 'bail|required',
+            'name' => 'bail|required',
+            "price" => 'bail|required',
+            "status" => 'bail|required',
+        ]);
+        if (Giftcode::where("itemid", $request->itemid)->first()) {
+            return redirect()->back()->with('error', 'Vật phẩm đã tồn tại.');
+        }
+        $item = Shop::find($id);
+        $item->itemid = $request->itemid;
+        $item->name = $request->name;
+        $item->price = $request->price;
+        $item->description = $request->description;
+        $item->status = $request->status;
+        $item->save();
+        return redirect("/shops");
+    }
+
     public function posts()
     {
         $posts = Post::latest()->get();
@@ -235,6 +261,7 @@ class HomeController extends Controller
         $item->giftcode = $request->giftcode;
         $item->itemid = $request->itemid;
         $item->expired = $request->expired;
+        $item->award = $request->award;
         $item->user_id = Auth::user()->id;
         $item->save();
         return redirect("/giftcodes");

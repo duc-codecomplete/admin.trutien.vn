@@ -43,6 +43,8 @@ Route::group(["middleware" => "auth"], function () {
 		Route::get('/', [HomeController::class, 'shops']);
 		Route::get('/add', [HomeController::class, 'shopsAddGet']);
 		Route::post('/add', [HomeController::class, 'shopsAddPost']);
+		Route::get('/{id}/edit', [HomeController::class, 'shopsEditGet']);
+		Route::post('/{id}/edit', [HomeController::class, 'shopsEditPost']);
 	});
 
 	Route::group(["prefix" => "posts"], function () {

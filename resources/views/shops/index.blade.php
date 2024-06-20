@@ -32,18 +32,19 @@
                                             <th>Tên vật phẩm</th>
                                             <th>Mô tả</th>
                                             <th>Giá tiền (xu)</th>
+                                            <th>Trạng thái</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($shops as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1}}</td>
-                                            <td>{{$item->itemid}}</td>
+                                            <td><a href="/shops/{{$item->id}}/edit">{{$item->itemid}}</a></td>
                                             <td>{{$item->name }}</td>
-                                            <td>{{$item->desctiption}}</td>
+                                            <td>{{$item->description}}</td>
                                             <td>{{$item->price }}
                                             </td>
-
+                                            <th>{!! $item->status == "active" ? "<span class='btn btn-sm btn-success'>Đang bán</span>" : "<span class='btn btn-sm btn-danger'>Ngừng bán</span>" !!}</th>
                                         </tr>
                                         @endforeach
 
