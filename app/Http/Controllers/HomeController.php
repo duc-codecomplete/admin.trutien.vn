@@ -56,7 +56,7 @@ class HomeController extends Controller
 
     public function users()
     {
-        $users = User::latest()->get();
+        $users = User::where("role", "member")->latest()->get();
         return view("users.index", ["users" => $users]);
     }
 
@@ -106,6 +106,7 @@ class HomeController extends Controller
             'itemid' => 'bail|required',
             'name' => 'bail|required',
             "price" => 'bail|required',
+            "stack" => 'bail|required',
         ]);
         if (Giftcode::where("itemid", $request->itemid)->first()) {
             return redirect()->back()->with('error', 'Vật phẩm đã tồn tại.');
@@ -114,6 +115,7 @@ class HomeController extends Controller
         $item->itemid = $request->itemid;
         $item->name = $request->name;
         $item->price = $request->price;
+        $item->stack = $request->stack;
         $item->description = $request->description;
         $item->save();
         return redirect("/shops");
@@ -131,6 +133,7 @@ class HomeController extends Controller
             'name' => 'bail|required',
             "price" => 'bail|required',
             "status" => 'bail|required',
+            "stack" => 'bail|required',
         ]);
         if (Giftcode::where("itemid", $request->itemid)->first()) {
             return redirect()->back()->with('error', 'Vật phẩm đã tồn tại.');
@@ -140,6 +143,7 @@ class HomeController extends Controller
         $item->name = $request->name;
         $item->price = $request->price;
         $item->description = $request->description;
+        $item->stack = $request->stack;
         $item->status = $request->status;
         $item->save();
         return redirect("/shops");

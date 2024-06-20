@@ -57,6 +57,14 @@
                             </div>
                         </div>
                         <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Stack (xếp chồng) <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="number" value="{{ $shop->stack }}" name="stack" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Trạng thái <span
                                     class="required">*</span>
                             </label>

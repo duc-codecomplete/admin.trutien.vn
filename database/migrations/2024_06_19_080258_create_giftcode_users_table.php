@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('giftcode_id');
             $table->integer('user_id');
+            $table->integer('char_id');
             $table->foreign('giftcode_id')->references('id')->on('giftcodes')->onDelete("cascade");
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->timestamps();

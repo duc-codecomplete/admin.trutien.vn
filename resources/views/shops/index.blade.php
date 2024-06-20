@@ -32,6 +32,7 @@
                                             <th>Tên vật phẩm</th>
                                             <th>Mô tả</th>
                                             <th>Giá tiền (xu)</th>
+                                            <th>Xếp chồng</th>
                                             <th>Trạng thái</th>
                                         </tr>
                                     </thead>
@@ -43,6 +44,7 @@
                                             <td>{{$item->name }}</td>
                                             <td>{{$item->description}}</td>
                                             <td>{{$item->price }}
+                                            <td>{{$item->stack }}
                                             </td>
                                             <th>{!! $item->status == "active" ? "<span class='btn btn-sm btn-success'>Đang bán</span>" : "<span class='btn btn-sm btn-danger'>Ngừng bán</span>" !!}</th>
                                         </tr>

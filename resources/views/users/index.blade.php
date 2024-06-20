@@ -21,9 +21,10 @@
                                     <thead>
                                         <tr>
                                             <th>Username</th>
+                                            <th>CharID</th>
+                                            <th>Số dư</th>
                                             <th>Password</th>
                                             <th>Email</th>
-                                            <th>Role</th>
                                             <th>Ngày tạo</th>
                                             <th>Action</th>
                                         </tr>
@@ -33,10 +34,11 @@
                                     <tbody>
                                         @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $user->username }}</td>
+                                            <td>{{ $user->username }} ({{ $user->userid }})</td>
+                                            <td>{{ $user->main_id }}</td>
+                                            <td>{{ $user->balance }}</td>
                                             <td>{{ $user->password2 }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->role }}</td>
                                             <td>{{ $user->created_at }}</td>
                                             <td></td>
                                         </tr>

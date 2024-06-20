@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('itemid');
             $table->integer('price');
+            $table->integer('stack')->default(1);
             $table->string("status")->default("active");
             $table->timestamps();
         });
