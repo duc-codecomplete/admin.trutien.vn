@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Deposit;
 use App\Models\Giftcode;
 use App\Models\Post;
+use App\Models\Mail;
 use App\Models\Promotion;
 use App\Models\User;
 use App\Models\Shop;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -271,4 +273,51 @@ class HomeController extends Controller
         return redirect("/giftcodes");
     }
 
+
+    public function getMail()
+    {
+        $mails = Mail::latest()->get();
+        return view("mail.index", ["mails" => $mails]);
+    }
+
+    public function getAddMail()
+    {
+        $users = User::where("role", "member")->orderBy("username")->get();
+        return view("mail.add", ["users" => $users]);
+    }
+
+    public function postAddMail(Request $request)
+    {
+        $validated = $request->validate([
+            'char_id' => 'bail|required',
+            'itemid' => 'bail|required',
+            "quantity" => 'bail|required',
+        ]);
+
+        try {
+            DB::beginTransaction();
+            $gameApi = env('GAME_API_ENDPOINT', '');
+            $client = new \GuzzleHttp\Client();
+            $client->request('POST', $gameApi . '/html/send2.php', ["form_params" => [
+                "receiver" => $request->char_id,
+                "itemid" => $request->itemid,
+                "count" => $request->quantity,
+            ]]);
+            $item = new Mail;
+            $item->char_id = $request->char_id;
+            $item->receiver = $request->receiver;
+            $item->itemid = $request->itemid;
+            $item->quantity = $request->quantity;
+            $item->description = $request->description;
+            $item->send_by = Auth::user()->id;
+            $item->status = "success";
+            $item->save();
+            DB::commit();
+            return redirect("/mail")->with("success", "Đã gửi tín sứ thành công!");
+        } catch (\Throwable $th) {
+            throw $th;
+            DB::rollback();
+            return back()->with("error", "Đã có lỗi xảy ra, không thể gửi được!");
+        }
+    }
 }

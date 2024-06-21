@@ -61,6 +61,12 @@ Route::group(["middleware" => "auth"], function () {
 		Route::get('/add', [HomeController::class, 'depositsProcess']);
 		Route::get('/{id}/approve', [HomeController::class, 'depositsApprove']);
 	});
+
+	Route::group(["prefix" => "mail"], function () {
+		Route::get('/', [HomeController::class, 'getMail']);
+		Route::get('/add', [HomeController::class, 'getAddMail']);
+		Route::post('/add', [HomeController::class, 'postAddMail']);
+	});
 });
 
 

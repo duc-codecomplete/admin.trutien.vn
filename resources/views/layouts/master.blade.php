@@ -19,6 +19,8 @@
   <link href="/assets/vendors/nprogress/nprogress.css" rel="stylesheet">
   <!-- iCheck -->
   <link href="/assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <link href="/assets/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+
 
   <!-- bootstrap-progressbar -->
   <link href="/assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
@@ -61,6 +63,7 @@
                 <li><a href="/deposits"><i class="fa fa-money"></i> Lịch Sử Nạp tiền</a></li>
                 <li><a href="/giftcodes"><i class="fa fa-gift"></i> Giftcode</a></li>
                 <li><a href="/shops"><i class="fa fa-shopping-cart"></i> Shop vật phẩm</a></li>
+                <li><a href="/mail"><i class="fa fa-envelope"></i> Gửi tín sứ</a></li>
                 <li><a href="/promotions"><i class="fa fa-send"></i> Khuyến Mãi</a></li>
                 <li><a href="/posts"><i class="fa fa-edit"></i> Tin tức</a></li>
               </ul>
@@ -218,6 +221,13 @@
   <script src="/assets/vendors/jszip/dist/jszip.min.js"></script>
   <script src="/assets/vendors/pdfmake/build/pdfmake.min.js"></script>
   <script src="/assets/vendors/pdfmake/build/vfs_fonts.js"></script>
+  <script src="/assets/vendors/select2/dist/js/select2.full.min.js"></script>
+
+<script src="/assets/vendors/parsleyjs/dist/parsley.min.js"></script>
+
+<script src="/assets/vendors/autosize/dist/autosize.min.js"></script>
+
+<script src="/assets/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
   <!-- Custom Theme Scripts -->
   <script src="/assets/build/js/custom.js"></script>
   @yield('script')

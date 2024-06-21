@@ -3,7 +3,7 @@
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Thông tin khuyến mãi</h3>
+            <h3>Thông tin vật phẩm</h3>
         </div>
     </div>
 
@@ -13,9 +13,9 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <a href="/giftcodes/add" class="nav navbar-right panel_toolbox">
+                    <a href="/mail/add" class="nav navbar-right panel_toolbox">
                         <li>
-                            <button href="/giftcodes/add" role="" class="btn btn-success">Thêm Mới</button>
+                            <button href="/mail/add" role="" class="btn btn-success">Thêm Mới</button>
                         </li>
                     </a>
                     <div class="clearfix"></div>
@@ -28,24 +28,27 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Giftcode</th>
-                                            <th>Ngày hết hạn</th>
-                                            <th>ID Vật Phẩm</th>
-                                            <th>Phần thưởng</th>
-                                            <th>Số lượng đã dùng</th>
+                                            <th>Tên tài khoản</th>
+                                            <th>ID nhân vật</th>
+                                            <th>ID vật phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Mô tả</th>
+                                            <th>Người gửi</th>
+                                            <th>Thời gian gửi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($giftcodes as $item)
+                                        @foreach ($mails as $item)
                                         <tr>
                                             <td>{{ $loop->index + 1}}</td>
-                                            <td>{{$item->giftcode}}</td>
-                                            <td>{{\Carbon\Carbon::parse($item->expired)->format("d/m/Y")}}</td>
-                                            <td>{{$item->itemid}}</td>
-                                            <td>{{$item->award}}</td>
-                                            <td>{{$item->count }}
+                                            <td>{{$item->receive ? $item->receive->username : ""}}</td>
+                                            <td>{{$item->char_id }}</td>
+                                            <td>{{$item->itemid }}</td>
+                                            <td>{{$item->quantity}}</td>
+                                            <td>{{$item->description }}
+                                            <td>{{$item->sender->username }}
+                                            <td>{{\Carbon\Carbon::parse($item->expired)->format("d/m/Y H:i:s")}}
                                             </td>
-
                                         </tr>
                                         @endforeach
 
