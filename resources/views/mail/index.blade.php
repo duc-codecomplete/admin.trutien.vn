@@ -13,10 +13,9 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <a href="/mail/add" class="nav navbar-right panel_toolbox">
-                        <li>
-                            <button href="/mail/add" role="" class="btn btn-success">Thêm Mới</button>
-                        </li>
+                    <a href="#" class="nav navbar-right panel_toolbox">
+                        <a href="/mail/add_fast"><button role="" class="btn btn-sm btn-success">Gửi nhanh</button></a>
+                        <a href="/mail/add"><button role="" class="btn btn-sm btn-primary">Gửi theo tài khoản</button></a>
                     </a>
                     <div class="clearfix"></div>
                 </div>

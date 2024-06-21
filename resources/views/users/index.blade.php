@@ -8,7 +8,11 @@
     </div>
 
     <div class="clearfix"></div>
-
+    <p class="text-muted font-13 m-b-30">
+        <i style="color:green" class="fa fa-check-circle"></i> Là tài khoản đã tạo nhân vật trong game.
+        <br>
+        <i style="color:rgb(206, 201, 201)" class="fa fa-check-circle"></i> Là tài khoản chưa tạo nhân vật trong game.
+    </p>
     <div class="row">
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
@@ -23,7 +27,6 @@
                                             <th>Username</th>
                                             <th>CharID</th>
                                             <th>Số dư</th>
-                                            <th>Password</th>
                                             <th>Email</th>
                                             <th>Ngày tạo</th>
                                             <th>Action</th>
@@ -34,13 +37,19 @@
                                     <tbody>
                                         @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $user->username }} ({{ $user->userid }})</td>
+                                            <td>
+                                                @if(count($user->chars()) > 0)
+                                                <i style="color:green" class="fa fa-check-circle"></i>
+                                                @else
+                                                <i style="color:rgb(206, 201, 201)" class="fa fa-check-circle"></i>
+                                                @endif
+                                                {{ $user->username }} ({{ $user->userid }})
+                                            </td>
                                             <td>{{ $user->main_id }}</td>
                                             <td>{{ $user->balance }}</td>
-                                            <td>{{ $user->password2 }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->created_at }}</td>
-                                            <td></td>
+                                            <td><a href="/users/{{$user->id}}/edit"><i class="fa fa-edit"></i></a></td>
                                         </tr>
                                         @endforeach
 

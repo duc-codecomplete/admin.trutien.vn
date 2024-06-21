@@ -26,39 +26,13 @@
                         </div>
                         @endif
                         @if(Session::has('error'))
-                        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                        <p class="alert alert-danger">{{ Session::get('error') }} Sử dụng cách gửi thông thường <a style="red" href="/mail/add">tại đây</a></p>
                         @endif
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tên tài khoản</label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <select class="select2_single form-control" tabindex="-1" name="receiver" id="userid">
-                                    <option value="">--Chọn tài khoản hoặc để trống--</option>
-                                    @foreach ($users as $item)
-                                        <option
-                                            value="{{ $item->id }}" 
-                                            userid="{{ $item->userid}}"
-                                            @php if ($userid == $item->userid) {
-                                                echo "selected";
-                                            } @endphp
-                                        >{{ $item->username }}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                        </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">ID nhân vật<span
                                 class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
-                                <select class="select2_single form-control" tabindex="-1" name="char_id" required>
-                                    @foreach ($chars as $item)
-                                        <option
-                                            value="{{ $item->char_id }}"
-                                        >{{ $item->name }} - {{ $item->gender }} - {{ $item->char_id }}</option>
-                                    @endforeach
-
-                                </select>
-                                {{-- <input type="number" name="char_id" class="form-control" required> --}}
+                                <input type="number" name="char_id" class="form-control" required>
                             </div>
                         </div>
                         <div class="item form-group">

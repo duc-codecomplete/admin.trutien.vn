@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Middleware\IsAdmin;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\GiftcodeController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\DepositController;
+use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,46 +31,54 @@ Route::group(["middleware" => "auth"], function () {
 		Auth::logout();
 		return redirect("/dang-nhap");
 	});
-	Route::get('/users', [HomeController::class, 'users']);
+
+	Route::group(["prefix" => "users"], function () {
+		Route::get('/', [UserController::class, 'index'])->name("users");
+		Route::get('/{id}/edit', [UserController::class, 'edit']);
+		Route::post('/{id}/edit', [UserController::class, 'update']);
+	});
+
 	Route::group(["prefix" => "promotions"], function () {
-		Route::get('/', [HomeController::class, 'promotions']);
-		Route::get('/add', [HomeController::class, 'promotionsAddGet']);
-		Route::post('/add', [HomeController::class, 'promotionsAddPost']);
+		Route::get('/', [PromotionController::class, 'index']);
+		Route::get('/add', [PromotionController::class, 'create']);
+		Route::post('/add', [PromotionController::class, 'store']);
 	});
 
 	Route::group(["prefix" => "giftcodes"], function () {
-		Route::get('/', [HomeController::class, 'giftcodes']);
-		Route::get('/add', [HomeController::class, 'giftcodesAddGet']);
-		Route::post('/add', [HomeController::class, 'giftcodesAddPost']);
+		Route::get('/', [GiftcodeController::class, 'index']);
+		Route::get('/add', [GiftcodeController::class, 'create']);
+		Route::post('/add', [GiftcodeController::class, 'store']);
 	});
 
 	Route::group(["prefix" => "shops"], function () {
-		Route::get('/', [HomeController::class, 'shops']);
-		Route::get('/add', [HomeController::class, 'shopsAddGet']);
-		Route::post('/add', [HomeController::class, 'shopsAddPost']);
-		Route::get('/{id}/edit', [HomeController::class, 'shopsEditGet']);
-		Route::post('/{id}/edit', [HomeController::class, 'shopsEditPost']);
+		Route::get('/', [ShopController::class, 'index']);
+		Route::get('/add', [ShopController::class, 'create']);
+		Route::post('/add', [ShopController::class, 'store']);
+		Route::get('/{id}/edit', [ShopController::class, 'edit']);
+		Route::post('/{id}/edit', [ShopController::class, 'update']);
 	});
 
 	Route::group(["prefix" => "posts"], function () {
-		Route::get('/', [HomeController::class, 'posts']);
-		Route::get('/add', [HomeController::class, 'postsAddGet']);
-		Route::post('/add', [HomeController::class, 'postsAddPost']);
-		Route::get('/{id}/edit', [HomeController::class, 'postsEditGet']);
-		Route::post('/{id}/edit', [HomeController::class, 'postsEditPost']);
-		Route::get('/{id}/delete', [HomeController::class, 'postsDeleteGet']);
+		Route::get('/', [PostController::class, 'index']);
+		Route::get('/add', [PostController::class, 'create']);
+		Route::post('/add', [PostController::class, 'store']);
+		Route::get('/{id}/edit', [PostController::class, 'edit']);
+		Route::post('/{id}/edit', [PostController::class, 'update']);
+		Route::get('/{id}/delete', [PostController::class, 'destroy']);
 	});
 
 	Route::group(["prefix" => "deposits"], function () {
-		Route::get('/', [HomeController::class, 'deposits']);
-		Route::get('/add', [HomeController::class, 'depositsProcess']);
-		Route::get('/{id}/approve', [HomeController::class, 'depositsApprove']);
+		Route::get('/', [DepositController::class, 'index']);
+		Route::get('/add', [DepositController::class, 'create']);
+		Route::get('/{id}/approve', [DepositController::class, 'store']);
 	});
 
 	Route::group(["prefix" => "mail"], function () {
-		Route::get('/', [HomeController::class, 'getMail']);
-		Route::get('/add', [HomeController::class, 'getAddMail']);
-		Route::post('/add', [HomeController::class, 'postAddMail']);
+		Route::get('/', [MailController::class, 'index']);
+		Route::get('/add', [MailController::class, 'create']);
+		Route::post('/add', [MailController::class, 'store']);
+		Route::get('/add_fast', [MailController::class, 'createFast']);
+		Route::post('/add_fast', [MailController::class, 'storeFast']);
 	});
 });
 

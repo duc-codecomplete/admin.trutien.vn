@@ -30,7 +30,6 @@
                                             <th>#</th>
                                             <th>ID vật phẩm</th>
                                             <th>Tên vật phẩm</th>
-                                            <th>Mô tả</th>
                                             <th>Giá tiền (xu)</th>
                                             <th>Xếp chồng</th>
                                             <th>Trạng thái</th>
@@ -42,7 +41,6 @@
                                             <td>{{ $loop->index + 1}}</td>
                                             <td><a href="/shops/{{$item->id}}/edit">{{$item->itemid}}</a></td>
                                             <td>{{$item->name }}</td>
-                                            <td>{{$item->description}}</td>
                                             <td>{{$item->price }}
                                             <td>{{$item->stack }}
                                             </td>

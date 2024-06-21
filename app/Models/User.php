@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function giftcodes() {
         return $this->hasMany(GiftcodeUser::class);
     }
+
+    public function chars() {
+        return Char::where("userid", $this->userid)->get();
+    }
 }
