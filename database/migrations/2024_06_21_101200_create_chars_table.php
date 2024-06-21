@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string("userid");
             $table->string("char_id")->unique();
             $table->string("name");
+            $table->string("gender")->defaut("Nam");
+            $table->integer("pk_value")->nullable();
+            $table->string("class")->defaut(0);
             $table->timestamps();
         });
     }
