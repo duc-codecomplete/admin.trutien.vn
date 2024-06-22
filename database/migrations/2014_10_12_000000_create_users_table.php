@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('password');
             $table->integer('change_pass')->default(0);
             $table->integer('balance')->default(0);
+            $table->dateTime("last_login")->nullable();
+            $table->boolean('is_online')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

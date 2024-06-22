@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("gender")->defaut("Nam");
             $table->integer("pk_value")->nullable();
             $table->string("class")->defaut(0);
+            $table->integer("level")->defaut(1);
             $table->timestamps();
         });
     }

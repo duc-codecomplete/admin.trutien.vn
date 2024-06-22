@@ -32,7 +32,14 @@
                             <label class="col-form-label col-md-3 col-sm-3 label-align">ID nhân vật<span
                                 class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="number" name="char_id" class="form-control" required>
+                                <select multiple="multiple" class="select2_multiple form-control" tabindex="-1" name="char_id[]" required>
+                                    @foreach ($chars as $item)
+                                        <option
+                                            value="{{ $item->char_id }}"
+                                        >{{ $item->name }} - {{ $item->char_id }}</option>
+                                    @endforeach
+
+                                </select>
                             </div>
                         </div>
                         <div class="item form-group">

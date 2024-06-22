@@ -76,38 +76,41 @@ class MailController extends Controller
 
     public function createFast()
     {
-        return view("mail.add2");
+        $chars = Char::orderBy("char_id")->get();
+        return view("mail.add2", ["chars" => $chars]);
     }
 
     public function storeFast(Request $request)
     {
         $validated = $request->validate([
-            'char_id' => 'bail|required',
+            'char_id' => 'bail|required|array|min:1',
             'itemid' => 'bail|required',
             "quantity" => 'bail|required',
         ]);
 
         try {
             DB::beginTransaction();
-            $gameApi = env('GAME_API_ENDPOINT', '');
-            $client = new \GuzzleHttp\Client();
-            $client->request('POST', $gameApi . '/html/send2.php', ["form_params" => [
-                "receiver" => $request->char_id,
-                "itemid" => $request->itemid,
-                "count" => $request->quantity,
-            ]]);
-            $item = new Mail;
-            $item->char_id = $request->char_id;
-            $char = Char::where("char_id", $request->char_id)->first();
-            if (!$char) {
-                return back()->with("error", "Không tồn tại nhân vật với ID này!");
+            foreach ($request->char_id as $char) {
+                $gameApi = env('GAME_API_ENDPOINT', '');
+                $client = new \GuzzleHttp\Client();
+                $client->request('POST', $gameApi . '/html/send2.php', ["form_params" => [
+                    "receiver" => $char,
+                    "itemid" => $request->itemid,
+                    "count" => $request->quantity,
+                ]]);
+                $item = new Mail;
+                $item->char_id = $char;
+                $char = Char::where("char_id", $char)->first();
+                if (!$char) {
+                    return back()->with("error", "Không tồn tại nhân vật với ID ".$char);
+                }
+                $item->itemid = $request->itemid;
+                $item->quantity = $request->quantity;
+                $item->description = $request->description;
+                $item->send_by = Auth::user()->id;
+                $item->status = "success";
+                $item->save();
             }
-            $item->itemid = $request->itemid;
-            $item->quantity = $request->quantity;
-            $item->description = $request->description;
-            $item->send_by = Auth::user()->id;
-            $item->status = "success";
-            $item->save();
             DB::commit();
             return redirect("/mail")->with("success", "Đã gửi tín sứ thành công!");
         } catch (\Throwable $th) {

@@ -115,7 +115,7 @@
                 <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown"
                   aria-expanded="false">
                   <i class="fa fa-bell"></i>
-                  <span class="badge bg-red">6</span>
+                  <span class="badge bg-red">0</span>
                 </a>
                 <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                   <li class="nav-item">

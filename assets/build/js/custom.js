@@ -993,8 +993,7 @@ function init_select2() {
     });
     $(".select2_group").select2({});
     $(".select2_multiple").select2({
-        maximumSelectionLength: 4,
-        placeholder: "With Max Selection limit 4",
+        placeholder: "Chọn 1 hoặc nhiều nhân vật",
         allowClear: true
     });
 

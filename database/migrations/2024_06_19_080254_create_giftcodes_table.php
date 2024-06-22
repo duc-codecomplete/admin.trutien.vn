@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('giftcode')->unique();
             $table->string('itemid');
             $table->dateTime('expired');
-            $table->integer('count')->default(1);
-            $table->integer('quantity')->default(0);
+            $table->integer('count')->default(0);
+            $table->integer('quantity')->default(1);
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->string('status')->default('active');
