@@ -2448,6 +2448,7 @@ function init_DataTables() {
         if ($("#datatable-buttons").length) {
             $("#datatable-buttons").DataTable({
                 dom: "Blfrtip",
+                pageLength: 50,
                 buttons: [
                     {
                         extend: "copy",
