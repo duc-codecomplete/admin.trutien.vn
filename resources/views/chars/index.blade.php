@@ -18,6 +18,10 @@
 
     <div class="clearfix"></div>
     <br>
+    <a href="/chars" type="button" class="btn btn-sm btn-primary">Toàn bộ</a>
+    <a href="/chars?need_change=true" type="button" class="btn btn-sm btn-success">Chỉ lỗi tên</a>
+    <br>
+    <br>
     <div class="row">
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
