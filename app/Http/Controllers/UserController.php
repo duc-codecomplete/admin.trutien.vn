@@ -2,17 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Deposit;
-use App\Models\Giftcode;
-use App\Models\Post;
-use App\Models\Mail;
-use App\Models\Promotion;
+use App\Models\Char;
 use App\Models\User;
-use App\Models\Shop;
-use Auth;
-use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -38,5 +30,22 @@ class UserController extends Controller
         $user->balance = $request->balance;
         $user->save();
         return back();
+    }
+
+    public function updateName(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'name2' => 'bail|required'
+        ]);
+        $char = Char::find($id);
+        $char->name2 = $request->name2;
+        $char->save();
+        return back();
+    }
+
+    public function chars()
+    {
+        $chars = Char::all();
+        return view("chars.index", ["chars" => $chars]);
     }
 }

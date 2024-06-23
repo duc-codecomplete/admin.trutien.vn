@@ -60,6 +60,7 @@
               <ul class="nav side-menu">
                 <li><a href="/"><i class="fa fa-laptop"></i> Trang chủ</a></li>
                 <li><a href="/users"><i class="fa fa-users"></i> Thành viên</a></li>
+                <li><a href="/chars"><i class="fa fa-user"></i> Nhân vật game</a></li>
                 <li><a href="/deposits"><i class="fa fa-money"></i> Lịch Sử Nạp tiền</a></li>
                 <li><a href="/giftcodes"><i class="fa fa-gift"></i> Giftcode</a></li>
                 <li><a href="/shops"><i class="fa fa-shopping-cart"></i> Shop vật phẩm</a></li>
