@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $revenue = Deposit::where("status", "done")->sum("amount");
+        $revenue = Deposit::where("status", "success")->sum("amount");
         $data = [
             "users" => User::count(),
             "revenue" => $revenue,
