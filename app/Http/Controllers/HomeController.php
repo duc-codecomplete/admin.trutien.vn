@@ -20,9 +20,11 @@ class HomeController extends Controller
     public function home()
     {
         $revenue = Deposit::where("status", "success")->sum("amount");
+        $revenue_today = Deposit::where("status", "success")->whereDate('created_at', \Carbon\Carbon::today())->sum("amount");
         $data = [
             "users" => User::count(),
             "revenue" => $revenue,
+            "revenue_today" => $revenue_today
         ];
         return view('home', ["data" => $data]);
     }

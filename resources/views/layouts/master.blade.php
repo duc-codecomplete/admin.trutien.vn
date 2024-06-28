@@ -62,6 +62,7 @@
                 <li><a href="/users"><i class="fa fa-users"></i> Thành viên</a></li>
                 <li><a href="/chars"><i class="fa fa-user"></i> Nhân vật game</a></li>
                 <li><a href="/deposits"><i class="fa fa-money"></i> Lịch Sử Nạp tiền</a></li>
+                <li><a href="/revenue"><i class="fa fa-money"></i> Doanh thu theo ngày</a></li>
                 <li><a href="/giftcodes"><i class="fa fa-gift"></i> Giftcode</a></li>
                 <li><a href="/shops"><i class="fa fa-shopping-cart"></i> Shop vật phẩm</a></li>
                 <li><a href="/mail"><i class="fa fa-envelope"></i> Gửi tín sứ</a></li>

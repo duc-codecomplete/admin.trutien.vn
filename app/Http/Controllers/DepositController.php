@@ -3,23 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
-use App\Models\Giftcode;
-use App\Models\Post;
-use App\Models\Mail;
-use App\Models\Promotion;
 use App\Models\User;
-use App\Models\Shop;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class DepositController extends Controller
 {
     public function index()
     {
         $deposits = Deposit::latest()->get();
+        $result = Deposit::select(
+            DB::raw('sum(amount) as sums'),
+            DB::raw("DATE_FORMAT(created_at,'%d/%m/%Y') as date")
+        )
+            ->groupBy('date')
+            ->get();
         return view("deposits.index", ["deposits" => $deposits]);
+    }
+
+    public function revenue()
+    {
+        $deposits = Deposit::select(
+            DB::raw('sum(amount) as sums'),
+            DB::raw("DATE_FORMAT(created_at,'%d/%m/%Y') as date")
+        )
+            ->latest('date')
+            ->groupBy('date')
+            ->get();
+        $revenue = Deposit::where("status", "success")->sum("amount");
+        return view("deposits.revenue", ["deposits" => $deposits, "revenue" => $revenue]);
     }
 
     public function create()

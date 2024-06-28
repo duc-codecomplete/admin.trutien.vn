@@ -87,6 +87,8 @@ Route::group(["middleware" => "auth"], function () {
 		Route::get('/add_fast', [MailController::class, 'createFast']);
 		Route::post('/add_fast', [MailController::class, 'storeFast']);
 	});
+
+	Route::get('/revenue', [DepositController::class, 'revenue']);
 });
 
 
