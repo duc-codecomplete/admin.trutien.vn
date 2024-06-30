@@ -89,6 +89,8 @@ Route::group(["middleware" => "auth"], function () {
 	});
 
 	Route::get('/revenue', [DepositController::class, 'revenue']);
+
+	Route::post('/upload/image', [PostController::class, 'upload'])->name("image.upload");
 });
 
 

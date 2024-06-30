@@ -73,7 +73,9 @@
 <script src="/assets/ckeditor/ckeditor.js"></script>
   <script>
     CKEDITOR.replace('editor', {
-        height: 560
+        height: 660,
+        filebrowserUploadUrl: "{{ route('image.upload', ['_token' => csrf_token()]) }}",
+        filebrowserUploadMethod: 'form'
     });
   </script>
 

@@ -73,11 +73,11 @@
 
 <script src="/assets/ckeditor/ckeditor.js"></script>
   <script>
-    CKEDITOR.replace('editor');
-
-    $("#editor").change(function(){
-  alert("The text has been changed.");
-});
+    CKEDITOR.replace('editor', {
+        height: 660,
+        filebrowserUploadUrl: "{{ route('image.upload', ['_token' => csrf_token()]) }}",
+        filebrowserUploadMethod: 'form'
+    });
   </script>
 
 @endsection
