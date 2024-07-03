@@ -68,6 +68,7 @@
                 <li><a href="/mail"><i class="fa fa-envelope"></i> Gửi tín sứ</a></li>
                 <li><a href="/promotions"><i class="fa fa-send"></i> Khuyến Mãi</a></li>
                 <li><a href="/posts"><i class="fa fa-edit"></i> Tin tức</a></li>
+                <li><a href="/guilds"><i class="fa fa-diamond"></i> Bang Hội</a></li>
               </ul>
             </div>
 

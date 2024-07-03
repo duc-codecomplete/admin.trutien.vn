@@ -9,6 +9,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\GuildController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +64,14 @@ Route::group(["middleware" => "auth"], function () {
 		Route::post('/add', [ShopController::class, 'store']);
 		Route::get('/{id}/edit', [ShopController::class, 'edit']);
 		Route::post('/{id}/edit', [ShopController::class, 'update']);
+	});
+
+	Route::group(["prefix" => "guilds"], function () {
+		Route::get('/', [GuildController::class, 'index']);
+		Route::get('/add', [GuildController::class, 'create']);
+		Route::post('/add', [GuildController::class, 'store']);
+		Route::get('/{id}/edit', [GuildController::class, 'edit']);
+		Route::post('/{id}/edit', [GuildController::class, 'update']);
 	});
 
 	Route::group(["prefix" => "posts"], function () {

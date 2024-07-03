@@ -59,4 +59,8 @@ class User extends Authenticatable
     public function chars() {
         return Char::where("userid", $this->userid)->get();
     }
+
+    public function guild() {
+        return $this->hasOne(Guild::class);
+    }
 }
