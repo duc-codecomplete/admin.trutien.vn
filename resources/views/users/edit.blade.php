@@ -57,13 +57,19 @@
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Số điện thoại</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input class="form-control" value="{{ $user->phone }}">
+                                <input class="form-control" name="phone" value="{{ $user->phone }}">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Số dư (xu)</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input name="balance" class="form-control" value="{{ $user->balance }}">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Xu khoá</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input name="balance_free" class="form-control" value="{{ $user->balance_free }}">
                             </div>
                         </div>
                         <div class="ln_solid"></div>

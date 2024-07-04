@@ -28,6 +28,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->phone = $request->phone;
         $user->balance = $request->balance;
+        $user->balance_free = $request->balance_free;
         $user->save();
         return back();
     }
