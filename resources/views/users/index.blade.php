@@ -43,7 +43,7 @@
                                                 @else
                                                 <i style="color:rgb(206, 201, 201)" class="fa fa-check-circle"></i>
                                                 @endif
-                                                {{ $user->username }} ({{ $user->userid }})
+                                                {{ $user->username }} (TT{{ $user->userid }})
                                             </td>
                                             <td>{{ $user->main_id }}</td>
                                             <td>{{ $user->balance }}</td>
