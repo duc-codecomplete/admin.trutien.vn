@@ -34,6 +34,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>UserID</th>
                                             <th>Tên trong game</th>
                                             <th>Tên hiển thị</th>
                                             <th>Level</th>
@@ -52,6 +53,7 @@
                                                     data-target="#char{{ $item->char_id }}">{{ $item->char_id
                                                     }}</button>
                                             </th>
+                                            <td>{{ $item->userid }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->name2 }}</td>
                                             <td>{{ $item->level }}</td>
