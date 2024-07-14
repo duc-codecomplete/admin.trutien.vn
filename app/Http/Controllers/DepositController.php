@@ -44,9 +44,10 @@ class DepositController extends Controller
     {
         try {
             $item = new Deposit;
+            $item->user_id = $request->user_id;
             $item->amount = $request->amount;
             $item->amount_promotion = $request->amount_promotion;
-            $item->status = "done";
+            $item->status = "success";
             $item->processing_time = date("Y-m-d H:i:s");
             $item->processing_user = 2;
             $item->save();

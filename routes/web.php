@@ -86,6 +86,7 @@ Route::group(["middleware" => "auth"], function () {
 	Route::group(["prefix" => "deposits"], function () {
 		Route::get('/', [DepositController::class, 'index']);
 		Route::get('/add', [DepositController::class, 'create']);
+		Route::post('/add', [DepositController::class, 'store']);
 		Route::get('/{id}/approve', [DepositController::class, 'store']);
 	});
 

@@ -19,19 +19,19 @@
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">User</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="number" name="amount" class="form-control" min="1" max="100">
+                                <input type="number" name="user_id" class="form-control">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Giá trị</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="number" name="amount" class="form-control" min="1" max="100">
+                                <input type="number" name="amount" class="form-control">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">KM</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="number" name="amount" class="form-control" min="1" max="100">
+                                <input type="number" name="amount_promotion" class="form-control">
                             </div>
                         </div>
                         <div class="ln_solid"></div>
