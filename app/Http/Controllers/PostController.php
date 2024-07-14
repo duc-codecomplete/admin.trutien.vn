@@ -48,6 +48,7 @@ class PostController extends Controller
     {
         $item = Post::find($id);
         $item->title = $request->title;
+        $item->slug = Str::slug($request->title, '-');
 
         $item->content = $request->content;
         $item->category = $request->category;

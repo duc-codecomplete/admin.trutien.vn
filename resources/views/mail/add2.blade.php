@@ -36,7 +36,7 @@
                                     @foreach ($chars as $item)
                                         <option
                                             value="{{ $item->char_id }}"
-                                        >{{ $item->name }} - {{ $item->char_id }}</option>
+                                        >{{ $item->name2 }} - {{ $item->char_id }}</option>
                                     @endforeach
 
                                 </select>

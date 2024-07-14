@@ -37,32 +37,22 @@ class DepositController extends Controller
 
     public function create()
     {
-        return view("promotions.add");
+        return view("deposits.add");
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $gameApi = env('GAME_API_ENDPOINT', '');
-        $item = Deposit::find($id);
-        $user = User::find($item->user_id);
-
-        $client = new \GuzzleHttp\Client();
         try {
-            $client->request('POST', $gameApi . '/html/knb.php', ["form_params" => [
-                "userid" => $user->userid,
-                "cash" => intval($item->amount_promotion) / 10,
-            ]]);
+            $item = new Deposit;
+            $item->amount = $request->amount;
+            $item->amount_promotion = $request->amount_promotion;
             $item->status = "done";
             $item->processing_time = date("Y-m-d H:i:s");
-            $item->processing_user = Auth::user()->id;
+            $item->processing_user = 2;
             $item->save();
-            return redirect("/deposits")->with("success", "Nạp Vgold thành công!");
+            return back();
         } catch (\Throwable $th) {
-            $item->status = "fail";
-            $item->processing_time = date("Y-m-d H:i:s");
-            $item->processing_user = Auth::user()->id;
-            $item->save();
-            return redirect("/deposits")->with("error", "Nạp Vgold thất bại!");
+            throw $th;
         }
     }
 }
