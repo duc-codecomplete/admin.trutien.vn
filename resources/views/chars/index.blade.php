@@ -47,11 +47,11 @@
 
                                     <tbody>
                                         @foreach ($chars as $item)
-                                        <tr style="background-color: {{ ($item->name2 == "" && specialChars($item->name)) ? '#efeaea' : '' }} ">
+                                        <tr style="background-color: {{ ($item->name2 == '' && specialChars($item->name)) ? '#efeaea' : '' }} ">
                                             <th scope="row">
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                                    data-target="#char{{ $item->char_id }}">{{ $item->char_id
-                                                    }}</button>
+                                                    data-target="#char{{ $item->char_id }}">{{ $item->char_id }}</button>
+                                                    {{ $item->char_id }}
                                             </th>
                                             <td>{{ $item->userid }}</td>
                                             <td>{{ $item->name }}</td>
