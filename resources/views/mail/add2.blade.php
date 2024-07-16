@@ -88,13 +88,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($mails as $item)
                                         <tr>
-                                            <td>{{ $loop->index + 1}}</td>
+                                            <td>1</td>
                                             <td>88122</td>
                                             <td>Giftcode fan cứng</td>
                                         </tr>
-                                        @endforeach
 
                                     </tbody>
                                 </table>
