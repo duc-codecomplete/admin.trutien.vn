@@ -101,6 +101,88 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+                        <table class="table" id="datatable-buttons">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Tài khoản</th>
+                      <th>Giá tiền gốc</th>
+                      <th>Giá tiền (KM)</th>
+                      <th>Thời gian xử lý</th>
+                      <th>Thời gian nạp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($deposits as $item)
+                    <tr>
+                      <th>{{ $loop->index + 1}}</th>
+                      <td>{{$item->user->username}}</td>
+                      <td>{{number_format($item->amount)}}</td>
+                      <td>{{number_format($item->amount_promotion)}}</td>
+                      <th>{{$item->processing_time ? \Carbon\Carbon::parse($item->processing_time)->format("d/m/Y
+                        H:i:s") : ""}}
+                      </th>
+                      <td>{{\Carbon\Carbon::parse($item->created_at)->format("d/m/Y H:i:s")}}</td>
+                    </tr>
+
+                    <div class="modal fade bs-example-modal-sm modal-deposit-{{$item->id}}" tabindex="-1" role="dialog"
+                      aria-modal="true" style="padding-right: 15px; display: none;">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel2">Xử lý nạp KNB</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Nhấn nút xác nhận, đồng thời KNB sẽ được chuyển vào tài khoản của người chơi, cẩn thận
+                              khi thao tác, không thể hoàn lại</p>
+                            <p>Thông tin giao dịch:</p>
+                            <ul>
+                              <li>Tài khoản: {{$item->user->username}}</li>
+                              <li>Giá tiền gốc: {{number_format($item->amount)}} </li>
+                              <li>Giá tiền sau khuyến mãi: {{number_format($item->amount_promotion)}}</li>
+                              <li>Thời gian nạp: {{\Carbon\Carbon::parse($item->created_at)->format("d/m/Y H:i:s")}}
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                            <a href="/deposits/{{$item->id}}/approve"><button type="button" class="btn btn-danger">Xác
+                                nhận</button></a>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
+
+                  </tbody>
+                </table>
+                        </div>
+                    </div>
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Danh sách nhân vật</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                        aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                    </div>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>

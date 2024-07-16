@@ -13,12 +13,10 @@ class DepositController extends Controller
     public function index()
     {
         $deposits = Deposit::latest()->get();
-        $result = Deposit::select(
-            DB::raw('sum(amount) as sums'),
-            DB::raw("DATE_FORMAT(created_at,'%d/%m/%Y') as date")
-        )
-            ->groupBy('date')
-            ->get();
+
+        if (request()->id) {
+            $deposits = Deposit::where("user_id", request()->id)->latest()->get();
+        }
         return view("deposits.index", ["deposits" => $deposits]);
     }
 

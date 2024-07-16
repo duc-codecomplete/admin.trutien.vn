@@ -16,7 +16,8 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        return view("users.edit", ["user" => User::find($id)]);
+        $deposits = Deposit::where("user_id", $id)->latest()->get();
+        return view("users.edit", ["user" => User::find($id), "deposits" => $deposits]);
     }
 
     public function update(Request $request, $id)
