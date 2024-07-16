@@ -77,6 +77,28 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+    <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ID vật phẩm</th>
+                                            <th>Tên vật phẩm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($mails as $item)
+                                        <tr>
+                                            <td>{{ $loop->index + 1}}</td>
+                                            <td>88122</td>
+                                            <td>Giftcode fan cứng</td>
+                                        </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+    </div>
 </div>
 @section('script')
     <script>
