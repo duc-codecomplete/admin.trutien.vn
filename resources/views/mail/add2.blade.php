@@ -79,6 +79,9 @@
     </div>
 
     <div class="row">
+    <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_content">
     <table class="table">
                                     <thead>
                                         <tr>
@@ -98,6 +101,9 @@
                                 </table>
     </div>
 </div>
+</div>
+        </div>
+    </div>
 @section('script')
     <script>
         $(document).ready(function() {
