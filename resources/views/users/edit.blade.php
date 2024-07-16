@@ -83,7 +83,7 @@
                     </form>
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Danh sách nhân vật</h2>
+                            <h2>Lịch sử nạp</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -258,7 +258,7 @@
     </div>
 </div>
 <style>
-    .dataTables_length, .dataTables_filter {
+    .dataTables_length, .dataTables_filter, .dt-buttons {
         display: none;
     }
 </style>
