@@ -257,4 +257,9 @@
         </div>
     </div>
 </div>
+<style>
+    .dataTables_length, .dataTables_filter {
+        display: none;
+    }
+</style>
 @endsection
