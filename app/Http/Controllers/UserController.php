@@ -18,6 +18,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $deposits = Deposit::where("user_id", $id)->latest()->get();
+        $user = User::find($id);
+        if (!$user) {
+            $user = User::where("username", $id)->first();
+        }
         return view("users.edit", ["user" => User::find($id), "deposits" => $deposits]);
     }
 
