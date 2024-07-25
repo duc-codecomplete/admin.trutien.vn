@@ -15,7 +15,7 @@ class DepositController extends Controller
         $deposits = Deposit::latest()->get();
 
         if (request()->id) {
-            $deposits = Deposit::where("user_id", request()->id)->latest()->get();
+            $deposits = Deposit::where("user_id", request()->id)->where("display", "on")->latest()->get();
         }
         return view("deposits.index", ["deposits" => $deposits]);
     }
@@ -29,7 +29,7 @@ class DepositController extends Controller
             ->latest('date')
             ->groupBy('date')
             ->get();
-        $revenue = Deposit::where("status", "success")->sum("amount");
+        $revenue = Deposit::where("status", "success")->where("display", "on")->sum("amount");
         return view("deposits.revenue", ["deposits" => $deposits, "revenue" => $revenue]);
     }
 
