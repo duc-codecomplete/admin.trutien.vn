@@ -19,8 +19,8 @@ class HomeController extends Controller
 
     public function home()
     {
-        $revenue = Deposit::where("status", "success")->sum("amount");
-        $revenue_today = Deposit::where("status", "success")->whereDate('created_at', \Carbon\Carbon::today())->sum("amount");
+        $revenue = Deposit::where("status", "success")->where("display", "on")->sum("amount");
+        $revenue_today = Deposit::where("status", "success")->where("display", "on")->whereDate('created_at', \Carbon\Carbon::today())->sum("amount");
         $data = [
             "users" => User::count(),
             "revenue" => $revenue,
