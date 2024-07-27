@@ -49,6 +49,7 @@ class UserController extends Controller
         $char->save();
         return back();
     }
+    
 
     public function deleteChar($id)
     {
