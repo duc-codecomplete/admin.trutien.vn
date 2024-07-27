@@ -29,6 +29,14 @@
                         <p class="alert alert-danger">{{ Session::get('error') }}</p>
                         @endif
                         <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">ID <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input readonly class="form-control" value="{{ $user->id }}">
+                            </div>
+                        </div>
+                        <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Email <span
                                     class="required">*</span>
                             </label>

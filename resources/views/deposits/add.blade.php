@@ -34,6 +34,12 @@
                                 <input type="number" name="amount_promotion" class="form-control">
                             </div>
                         </div>
+                        <div class="item form-group" style="display: none">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input name="amount_promotion" class="form-control" value="on">
+                            </div>
+                        </div>
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">

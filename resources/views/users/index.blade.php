@@ -24,6 +24,7 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Username</th>
                                             <th>CharID</th>
                                             <th>Số dư</th>
@@ -37,6 +38,7 @@
                                     <tbody>
                                         @foreach ($users as $user)
                                         <tr>
+                                            <td>{{ $user->id }}</td>
                                             <td>
                                                 @if(count($user->chars()) > 0)
                                                 <i style="color:green" class="fa fa-check-circle"></i>

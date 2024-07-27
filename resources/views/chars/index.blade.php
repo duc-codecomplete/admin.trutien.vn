@@ -33,14 +33,13 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Char ID</th>
                                             <th>UserID</th>
                                             <th>Tên trong game</th>
                                             <th>Tên hiển thị</th>
                                             <th>Level</th>
                                             <th>Môn phái</th>
                                             <th>Giới tính</th>
-                                            <th>Hiệp nghĩa</th>
                                         </tr>
                                     </thead>
 
@@ -49,65 +48,20 @@
                                         @foreach ($chars as $item)
                                         <tr style="background-color: {{ ($item->name2 == '' && specialChars($item->name)) ? '#efeaea' : '' }} ">
                                             <th scope="row">
-                                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                                    data-target="#char{{ $item->char_id }}">{{ $item->char_id }}</button>
                                                     {{ $item->char_id }}
                                             </th>
                                             <td>{{ $item->userid }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->name2 }}</td>
+                                            <td>
+                                            <form action="/chars/{{$item->id}}/update_name" method="POST" class="form-horizontal form-label-left">
+                                            @csrf
+                                                <input required name="name2" value="{{ $item->name2 }}" style="margin-right:5px"><button type="submit">Save</button>
+                                            </form>
+                                            </td>
                                             <td>{{ $item->level }}</td>
                                             <td>{{ $item->getClass() }}</td>
                                             <td>{{ $item->gender }}</td>
-                                            <td>{{ $item->reputation }}</td>
                                         </tr>
-                                        <div class="modal" id="char{{ $item->char_id }}" tabindex="-1" role="dialog"
-                                            style="display: none; padding-right: 15px;" aria-modal="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title" id="myModalLabel2">Đổi tên hiển thị</h4>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close"><span aria-hidden="true">×</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="/users/{{$item->id}}/update_name" method="POST"
-                                                            class="form-horizontal form-label-left">
-                                                            @csrf
-                                                            <div class="item form-group">
-                                                                <label
-                                                                    class="col-form-label col-md-3 col-sm-3 label-align">Tên
-                                                                    trong game <span class="required">*</span>
-                                                                </label>
-                                                                <div class="col-md-6 col-sm-6 ">
-                                                                    <input readonly class="form-control"
-                                                                        value="{{ $item->name }}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="item form-group">
-                                                                <label
-                                                                    class="col-form-label col-md-3 col-sm-3 label-align">Tên
-                                                                    hiển thị</label>
-                                                                <div class="col-md-6 col-sm-6 ">
-                                                                    <input name="name2" class="form-control"
-                                                                        value="{{ $item->name2 }}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="ln_solid"></div>
-                                                            <div class="item form-group">
-                                                                <div class="col-md-6 col-sm-6 offset-md-3">
-                                                                    <a href="/chars" class="btn btn-danger"
-                                                                        type="button">Huỷ</a>
-                                                                    <button type="submit" class="btn btn-success">Cập
-                                                                        nhật</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         @endforeach
 
                                     </tbody>

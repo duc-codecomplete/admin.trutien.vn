@@ -37,13 +37,13 @@ Route::group(["middleware" => "auth"], function () {
 		Route::get('/', [UserController::class, 'index'])->name("users");
 		Route::get('/{id}/edit', [UserController::class, 'edit']);
 		Route::post('/{id}/edit', [UserController::class, 'update']);
-		Route::post('/{id}/update_name', [UserController::class, 'updateName']);
 	});
 
 	Route::group(["prefix" => "chars"], function () {
 		Route::get('/', [UserController::class, 'chars'])->name("chars");
 		Route::get('/{id}/edit', [UserController::class, 'edit']);
 		Route::post('/{id}/edit', [UserController::class, 'update']);
+		Route::post('/{id}/update_name', [UserController::class, 'updateName']);
 	});
 
 	Route::group(["prefix" => "promotions"], function () {
