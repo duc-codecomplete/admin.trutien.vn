@@ -50,6 +50,13 @@ class UserController extends Controller
         return back();
     }
 
+    public function deleteChar($id)
+    {
+        $char = Char::find($id);
+        $char->delete();
+        return back();
+    }
+
     public function chars()
     {
         $chars = Char::all();

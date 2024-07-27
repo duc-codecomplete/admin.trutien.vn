@@ -40,6 +40,7 @@
                                             <th>Level</th>
                                             <th>Môn phái</th>
                                             <th>Giới tính</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
 
@@ -61,6 +62,7 @@
                                             <td>{{ $item->level }}</td>
                                             <td>{{ $item->getClass() }}</td>
                                             <td>{{ $item->gender }}</td>
+                                            <th><a href="/chars/{{$item->id}}/delete"><button>Xóa</button></a></th>
                                         </tr>
                                         @endforeach
 

@@ -44,6 +44,7 @@ Route::group(["middleware" => "auth"], function () {
 		Route::get('/{id}/edit', [UserController::class, 'edit']);
 		Route::post('/{id}/edit', [UserController::class, 'update']);
 		Route::post('/{id}/update_name', [UserController::class, 'updateName']);
+		Route::get('/{id}/delete', [UserController::class, 'deleteChar']);
 	});
 
 	Route::group(["prefix" => "promotions"], function () {
