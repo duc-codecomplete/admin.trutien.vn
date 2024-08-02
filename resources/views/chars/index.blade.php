@@ -35,7 +35,9 @@
                                         <tr>
                                             <th>Char ID</th>
                                             <th>UserID</th>
-                                            <th>Tên trong game</th>
+                                            <th>Username</th>
+                                            <th>Tên trong game</th>\
+                                            <th>Ingame</th>
                                             <th>Tên hiển thị</th>
                                             <th>Level</th>
                                             <th>Môn phái</th>
@@ -52,7 +54,9 @@
                                                     {{ $item->char_id }}
                                             </th>
                                             <td>{{ $item->userid }}</td>
+                                            <th><a href="/users/{{$item->user->id}}/edit">{{ $item->user->username }}</a></th>
                                             <td>{{ $item->name }}</td>
+                                            <td>{{ $item->name2 }}</td>
                                             <td>
                                             <form action="/chars/{{$item->id}}/update_name" method="POST" class="form-horizontal form-label-left">
                                             @csrf
