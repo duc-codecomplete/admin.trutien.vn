@@ -54,7 +54,7 @@
                                                     {{ $item->char_id }}
                                             </th>
                                             <td>{{ $item->userid }}</td>
-                                            <th><a href="/users/{{$item->user->id}}/edit">{{ $item->user->username }}</a></th>
+                                            <th><a href="/users/{{$item->user ? $item->user->id : ''}}/edit">{{ $item->user ? $item->user->username : ""}}</a></th>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->name2 }}</td>
                                             <td>
