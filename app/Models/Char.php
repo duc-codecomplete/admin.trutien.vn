@@ -120,4 +120,8 @@ class Char extends Model
     public function getName() {
         return $this->name2 ?? $this->name;
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
