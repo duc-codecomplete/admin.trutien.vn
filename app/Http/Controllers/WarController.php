@@ -43,12 +43,10 @@ class WarController extends Controller
         
         $xulose = (100000 + $addon*500)/10*4;
 
-        $xuwin1 = floor($xuwin/30000);
-        $xuwin2 = $xuwin % 30000;
-
-        $xulose1 = floor($xulose/30000);
-        $xulose2 = $xulose % 30000;
+        $xuwin2 = floor($xuwin/30000);
         
+
+        $xulose2 = floor($xulose/30000);
         $client = new \GuzzleHttp\Client();
         
         $gameApi = "http://103.56.162.87/html/send2.php";
@@ -94,8 +92,8 @@ class WarController extends Controller
         $client->request('POST', $gameApi, ["form_params" => [
             "receiver" => $lose,
             "itemid" => 109807,
-            "itemid" => 8000,
-            "count" => "Top Support G Thua ".request()->date
+            "count" => 8000,
+            "msg" => "Top Support G Thua ".request()->date
         ]]);
         
         
