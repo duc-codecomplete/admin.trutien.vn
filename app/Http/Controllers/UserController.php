@@ -35,6 +35,7 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->balance = $request->balance;
         $user->balance_free = $request->balance_free;
+        $user->rank = $request->rank;
         $user->save();
         return back();
     }
