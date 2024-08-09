@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\GuildController;
+use App\Http\Controllers\WarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,6 +101,8 @@ Route::group(["middleware" => "auth"], function () {
 	});
 
 	Route::get('/revenue', [DepositController::class, 'revenue']);
+	Route::get('/war', [WarController::class, 'getWar']);
+	Route::post('/war', [WarController::class, 'postWar']);
 
 	Route::post('/upload/image', [PostController::class, 'upload'])->name("image.upload");
 });
